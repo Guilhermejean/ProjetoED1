@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "pilhaDinamica.h"
+
+// Inicializa a pilha
+void inicializaPilha(Pilha* pilha) {
+    pilha->topo = NULL;
+}
+
+// Adiciona uma nova ação ao topo
+void push(Pilha* pilha, char acao[]) {
+    NodoPilha* novo = malloc(sizeof(NodoPilha));
+    strcpy(novo->acao, acao);
+    novo->prox = pilha->topo;
+    pilha->topo = novo;
+}
+
+// Remove e retorna a última ação registrada
+char* pop(Pilha* pilha) {
+    static char acao[200];
+    if (!pilha->topo) return NULL;
+
+    NodoPilha* temp = pilha->topo;
+    strcpy(acao, temp->acao);
+    pilha->topo = temp->prox;
+    free(temp);
+    return acao;
+}
+
+// Imprime todas as ações da pilha
+void imprimePilha(Pilha pilha) {
+    NodoPilha* atual = pilha.topo;
+    while (atual) {
+        printf("Ação: %s\n", atual->acao);
+        atual = atual->prox;
+    }
+}
+
+// Libera memória da pilha
+void liberaPilha(Pilha* pilha) {
+    NodoPilha* atual = pilha->topo;
+    while (atual) {
+        NodoPilha* temp = atual;
+        atual = atual->prox;
+        free(temp);
+    }
+    pilha->topo = NULL;
+}
