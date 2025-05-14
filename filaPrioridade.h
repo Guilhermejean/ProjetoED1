@@ -1,28 +1,27 @@
 #ifndef FILAPRIORIDADE_H
 #define FILAPRIORIDADE_H
 
-#include <stdio.h>
+#include <stdbool.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-// Estrutura do nó da lista
-// typedef struct No {
-//     int dado;
-//     struct No* prox;
-// } No;
+typedef struct elemento {
+    int prioridade;
+    char nome[30];
+    struct elemento *prox;
+} ELEMENTO;
 
-// Estrutura da lista encadeada
-// typedef struct {
-//     No* cabeca;
-// } Lista;
+typedef struct fila_prioridade{
+    ELEMENTO *inicio;
+    int tamanho;
+} FILA_PRIORIDADE;
 
-// Funções da lista encadeada
-// void inicializarLista(Lista* lista);
-// int isListaVazia(Lista* lista);
-// void inserirNaLista(Lista* lista, int valor);
-// void adicionarEm(Lista* lista, int valor, int posicao);
-// void removerNoLista(Lista* lista, int valor);
-// No* encontrarNo(Lista* lista, int valor);
-// void exibirLista(Lista* lista);
-// void liberarLista(Lista* lista);
+void inicializaFila(FILA_PRIORIDADE *fila);
+bool FilaEstaVazia(FILA_PRIORIDADE *fila);
+int tamanhoFila(FILA_PRIORIDADE *fila);
+void insereElementoFila(FILA_PRIORIDADE *fila, int prioridade, char nome[]);
+void removeElemento(FILA_PRIORIDADE *fila);
+void imprimeFila(FILA_PRIORIDADE *fila);
+void destroiFila(FILA_PRIORIDADE *fila);
 
 #endif
