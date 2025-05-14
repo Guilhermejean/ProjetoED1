@@ -3,6 +3,7 @@
 #include <string.h>
 #include "pilhaDinamica.h"
 #include <stdbool.h>
+#include <unistd.h>
 // Inicializa a pilha
 void inicializaPilha(Pilha* pilha) {
     pilha->topo = NULL;
@@ -26,6 +27,24 @@ char* pop(Pilha* pilha) {
     pilha->topo = temp->prox;
     free(temp);
     return acao;
+}
+void Apaga_pilha(Pilha* pilha) {
+    if (pilha->topo == NULL) {
+        printf("nenhum log a ser apagado\n");
+        sleep(2);
+        return;
+    }
+
+    // Libera todos os nós da pilha
+    NoPilha* atual = pilha->topo;
+    while (atual != NULL) {
+        NoPilha* temp = atual;
+        atual = atual->prox;
+        free(temp);
+    }
+
+    // Libera a estrutura da pilha
+    
 }
 bool PilhaVazia(Pilha pilha){
     return pilha.topo==NULL;

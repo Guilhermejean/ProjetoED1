@@ -19,4 +19,5 @@ char* pop(Pilha* pilha);
 void imprimePilha(Pilha pilha);
 void liberaPilha(Pilha* pilha);
 bool PilhaVazia(Pilha pilha);
+void Apaga_pilha(Pilha* pilha);
 #endif

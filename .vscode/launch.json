@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/eduardo-costa/Documentos/trabalhoED1/ProjetoED1",
-      "program": "/home/eduardo-costa/Documentos/trabalhoED1/ProjetoED1/build/Debug/outDebug",
+      "cwd": "/root/ProjetoED1",
+      "program": "/root/ProjetoED1/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
