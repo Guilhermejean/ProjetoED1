@@ -1,6 +1,8 @@
 #ifndef LISTAORDENADA_H
 #define LISTAORDENADA_H
 
+#include <stdbool.h>
+
 // Nó da lista ordenada
 typedef struct NoLista{
     char nome[100];
@@ -17,5 +19,6 @@ void inicializaLista(ListaOrdenada* lista);
 void insereOrdenado(ListaOrdenada* lista, char nome[]);
 void imprimeLista(ListaOrdenada lista);
 void liberaLista(ListaOrdenada* lista);
+bool estaVazia(ListaOrdenada *lista);
 
 #endif

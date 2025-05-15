@@ -1,6 +1,7 @@
 #ifndef FILAPRIORIDADE_H
 #define FILAPRIORIDADE_H
 
+#include <stdbool.h>
 // Estrutura que representa um paciente
 typedef struct Paciente{
     char nome[100];
@@ -22,7 +23,7 @@ typedef struct{
 void inicializaFila(FilaPrioridade* fila);
 void enfileira(FilaPrioridade* fila, Paciente paciente);
 Paciente desenfileira(FilaPrioridade* fila);
-int filaVazia(FilaPrioridade* fila);
+ bool filaVazia(FilaPrioridade* fila);
 void imprimeFila(FilaPrioridade fila);
 
 #endif

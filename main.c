@@ -47,7 +47,7 @@ int main() {
             enfileira(&fila, p);
 
             char acao[200];
-            printf(acao, "Paciente %s adicionado com prioridade %d", p.nome, p.prioridade);
+            sprintf(acao, "Paciente %s adicionado com prioridade %d", p.nome, p.prioridade);
             push(&log, acao);
             break;
         case 2:
@@ -57,7 +57,7 @@ int main() {
                 insereOrdenado(&historico, p.nome);
 
                 char acao[200];
-                printf(acao, "Paciente %s foi atendido", p.nome);
+                sprintf(acao, "Paciente %s foi atendido", p.nome);
                 push(&log, acao);
             } else {
                 printf("Nenhum paciente na fila.\n");
@@ -74,7 +74,7 @@ int main() {
             break;
         case 0:
             printf("Saindo do sistema...\n");
-            sleep(5);
+            sleep(2);
             break;
         
         default:

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "pilhaDinamica.h"
-
+#include <stdbool.h>
 // Inicializa a pilha
 void inicializaPilha(Pilha* pilha) {
     pilha->topo = NULL;
@@ -27,9 +27,18 @@ char* pop(Pilha* pilha) {
     free(temp);
     return acao;
 }
+bool PilhaVazia(Pilha pilha){
+    return pilha.topo==NULL;
+}
 
 // Imprime todas as ações da pilha
 void imprimePilha(Pilha pilha) {
+    if (PilhaVazia(pilha))
+    {
+        printf("pilha vazia\n");
+        return;
+    }
+    
     NoPilha* atual = pilha.topo;
     while (atual) {
         printf("Ação: %s\n", atual->acao);

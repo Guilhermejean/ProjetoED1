@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <unistd.h>
+#include <stdbool.h>
 // Inicializa a fila
 void inicializaFila(FilaPrioridade* fila){
     fila->inicio = NULL;
@@ -45,15 +46,23 @@ Paciente desenfileira(FilaPrioridade* fila){
 }
 
 // Verifica se a fila está vazia
-int filaVazia(FilaPrioridade* fila){
+bool filaVazia(FilaPrioridade* fila){
     return fila->inicio == NULL;
 }
 
 // Imprime os pacientes na fila
 void imprimeFila(FilaPrioridade fila){
+    if (filaVazia(&fila)==true )
+    {
+        printf("\n\nfila vazia\n");
+        sleep(3);
+       return;
+    }
+    
     NoFila* atual = fila.inicio;
     while (atual){
         printf("Paciente: %s | Prioridade: %d\n", atual->paciente.nome, atual->paciente.prioridade);
+        sleep(3);
         atual = atual->prox;
     }
 }

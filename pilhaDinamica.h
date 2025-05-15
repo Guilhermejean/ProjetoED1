@@ -1,10 +1,10 @@
 #ifndef PILHADINAMICA_H
 #define PILHADINAMICA_H
-
+#include <stdbool.h>
 // Nó da pilha
 typedef struct NoPilha {
     char acao[200];
-    struct NodoPilha* prox;
+    struct NoPilha* prox;
 } NoPilha;
 
 // Pilha com ponteiro para o topo
@@ -18,5 +18,5 @@ void push(Pilha* pilha, char acao[]);
 char* pop(Pilha* pilha);
 void imprimePilha(Pilha pilha);
 void liberaPilha(Pilha* pilha);
-
+bool PilhaVazia(Pilha pilha);
 #endif
