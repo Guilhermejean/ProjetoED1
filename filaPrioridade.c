@@ -4,13 +4,13 @@
 #include <string.h>
 
 // Inicializa a fila
-void inicializaFila(FilaPrioridade* fila) {
+void inicializaFila(FilaPrioridade* fila){
     fila->inicio = NULL;
 }
 
 // Insere paciente na fila com base na prioridade (menor número = maior prioridade)
-void enfileira(FilaPrioridade* fila, Paciente paciente) {
-    NodoFila* novo = malloc(sizeof(NodoFila));
+void enfileira(FilaPrioridade* fila, Paciente paciente){
+    NoFila* novo = malloc(sizeof(NoFila));
     novo->paciente = paciente;
     novo->prox = NULL;
 
@@ -20,7 +20,7 @@ void enfileira(FilaPrioridade* fila, Paciente paciente) {
         return;
     }
 
-    NodoFila* atual = fila->inicio;
+    NoFila* atual = fila->inicio;
     while (atual->prox && atual->prox->paciente.prioridade <= paciente.prioridade) {
         atual = atual->prox;
     }
@@ -30,11 +30,14 @@ void enfileira(FilaPrioridade* fila, Paciente paciente) {
 }
 
 // Remove paciente do início da fila (maior prioridade)
-Paciente desenfileira(FilaPrioridade* fila) {
+Paciente desenfileira(FilaPrioridade* fila){
     Paciente pacienteVazio = {"", -1};
-    if (!fila->inicio) return pacienteVazio;
 
-    NodoFila* temp = fila->inicio;
+    if (fila->inicio == NULL) {
+        return pacienteVazio;
+    }
+
+    NoFila* temp = fila->inicio;
     Paciente p = temp->paciente;
     fila->inicio = temp->prox;
     free(temp);
@@ -42,14 +45,14 @@ Paciente desenfileira(FilaPrioridade* fila) {
 }
 
 // Verifica se a fila está vazia
-int filaVazia(FilaPrioridade* fila) {
+int filaVazia(FilaPrioridade* fila){
     return fila->inicio == NULL;
 }
 
 // Imprime os pacientes na fila
-void imprimeFila(FilaPrioridade fila) {
-    NodoFila* atual = fila.inicio;
-    while (atual) {
+void imprimeFila(FilaPrioridade fila){
+    NoFila* atual = fila.inicio;
+    while (atual){
         printf("Paciente: %s | Prioridade: %d\n", atual->paciente.nome, atual->paciente.prioridade);
         atual = atual->prox;
     }

@@ -10,7 +10,7 @@ void inicializaPilha(Pilha* pilha) {
 
 // Adiciona uma nova ação ao topo
 void push(Pilha* pilha, char acao[]) {
-    NodoPilha* novo = malloc(sizeof(NodoPilha));
+    NoPilha* novo = malloc(sizeof(NoPilha));
     strcpy(novo->acao, acao);
     novo->prox = pilha->topo;
     pilha->topo = novo;
@@ -21,7 +21,7 @@ char* pop(Pilha* pilha) {
     static char acao[200];
     if (!pilha->topo) return NULL;
 
-    NodoPilha* temp = pilha->topo;
+    NoPilha* temp = pilha->topo;
     strcpy(acao, temp->acao);
     pilha->topo = temp->prox;
     free(temp);
@@ -30,7 +30,7 @@ char* pop(Pilha* pilha) {
 
 // Imprime todas as ações da pilha
 void imprimePilha(Pilha pilha) {
-    NodoPilha* atual = pilha.topo;
+    NoPilha* atual = pilha.topo;
     while (atual) {
         printf("Ação: %s\n", atual->acao);
         atual = atual->prox;
@@ -39,9 +39,9 @@ void imprimePilha(Pilha pilha) {
 
 // Libera memória da pilha
 void liberaPilha(Pilha* pilha) {
-    NodoPilha* atual = pilha->topo;
+    NoPilha* atual = pilha->topo;
     while (atual) {
-        NodoPilha* temp = atual;
+        NoPilha* temp = atual;
         atual = atual->prox;
         free(temp);
     }

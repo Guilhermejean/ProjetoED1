@@ -5,24 +5,24 @@
 #include "listaOrdenada.h"
 
 // Inicializa a lista ordenada
-void inicializaLista(ListaOrdenada* lista) {
+void inicializaLista(ListaOrdenada* lista){
     lista->inicio = NULL;
 }
 
 // Insere nome em ordem alfabética
-void insereOrdenado(ListaOrdenada* lista, char nome[]) {
-    NodoLista* novo = malloc(sizeof(NodoLista));
+void insereOrdenado(ListaOrdenada* lista, char nome[]){
+    NoLista* novo = malloc(sizeof(NoLista));
     strcpy(novo->nome, nome);
     novo->prox = NULL;
 
-    if (!lista->inicio || strcmp(nome, lista->inicio->nome) < 0) {
+    if (!lista->inicio || strcmp(nome, lista->inicio->nome) < 0){
         novo->prox = lista->inicio;
         lista->inicio = novo;
         return;
     }
 
-    NodoLista* atual = lista->inicio;
-    while (atual->prox && strcmp(nome, atual->prox->nome) > 0) {
+    NoLista* atual = lista->inicio;
+    while (atual->prox && strcmp(nome, atual->prox->nome) > 0){
         atual = atual->prox;
     }
 
@@ -31,19 +31,19 @@ void insereOrdenado(ListaOrdenada* lista, char nome[]) {
 }
 
 // Imprime a lista de nomes
-void imprimeLista(ListaOrdenada lista) {
-    NodoLista* atual = lista.inicio;
-    while (atual) {
+void imprimeLista(ListaOrdenada lista){
+    NoLista* atual = lista.inicio;
+    while (atual){
         printf("Paciente atendido: %s\n", atual->nome);
         atual = atual->prox;
     }
 }
 
 // Libera memória da lista
-void liberaLista(ListaOrdenada* lista) {
-    NodoLista* atual = lista->inicio;
+void liberaLista(ListaOrdenada* lista){
+    NoLista* atual = lista->inicio;
     while (atual) {
-        NodoLista* temp = atual;
+        NoLista* temp = atual;
         atual = atual->prox;
         free(temp);
     }

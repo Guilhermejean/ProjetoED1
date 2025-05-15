@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include "filaPrioridade.h"
 #include "listaOrdenada.h"
 #include "pilhaDinamica.h"
@@ -31,44 +32,54 @@ int main() {
     do {
         menu();
         scanf("%d", &opcao);
-        getchar();
 
-        if (opcao == 1) {
+        switch (opcao){
+        case 1:
             Paciente p;
+            setbuf(stdin, NULL);
             printf("Nome do paciente: ");
             fgets(p.nome, 100, stdin);
             p.nome[strcspn(p.nome, "\n")] = 0;
-            printf("Prioridade (1-Alta, 2-Média, 3-Baixa): ");
+
+            printf("Prioridade de atendimento (1-Emergência, 2-Urgência, 3-Pouco Urgente, 4 - Não Urgente): ");
             scanf("%d", &p.prioridade);
-            getchar();
 
             enfileira(&fila, p);
 
             char acao[200];
-            sprintf(acao, "Paciente %s adicionado com prioridade %d", p.nome, p.prioridade);
+            printf(acao, "Paciente %s adicionado com prioridade %d", p.nome, p.prioridade);
             push(&log, acao);
-
-        } else if (opcao == 2) {
+            break;
+        case 2:
             if (!filaVazia(&fila)) {
                 Paciente p = desenfileira(&fila);
                 printf("Atendendo: %s\n", p.nome);
                 insereOrdenado(&historico, p.nome);
 
                 char acao[200];
-                sprintf(acao, "Paciente %s foi atendido", p.nome);
+                printf(acao, "Paciente %s foi atendido", p.nome);
                 push(&log, acao);
             } else {
                 printf("Nenhum paciente na fila.\n");
             }
-
-        } else if (opcao == 3) {
+            break;
+        case 3:
             imprimeFila(fila);
-
-        } else if (opcao == 4) {
+            break;
+        case 4:
             imprimeLista(historico);
-
-        } else if (opcao == 5) {
+            break;
+        case 5:
             imprimePilha(log);
+            break;
+        case 0:
+            printf("Saindo do sistema...\n");
+            sleep(5);
+            break;
+        
+        default:
+            printf("Opção inválida. Tente novamente.\n");
+            break;
         }
 
     } while (opcao != 0);

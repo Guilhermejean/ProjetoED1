@@ -2,14 +2,14 @@
 #define PILHADINAMICA_H
 
 // Nó da pilha
-typedef struct NodoPilha {
+typedef struct NoPilha {
     char acao[200];
     struct NodoPilha* prox;
-} NodoPilha;
+} NoPilha;
 
 // Pilha com ponteiro para o topo
 typedef struct {
-    NodoPilha* topo;
+    NoPilha* topo;
 } Pilha;
 
 // Funções da pilha dinâmica

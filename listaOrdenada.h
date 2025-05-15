@@ -2,14 +2,14 @@
 #define LISTAORDENADA_H
 
 // Nó da lista ordenada
-typedef struct NodoLista {
+typedef struct NoLista{
     char nome[100];
-    struct NodoLista* prox;
-} NodoLista;
+    struct NoLista* prox;
+} NoLista;
 
 // Lista com ponteiro para o início
 typedef struct {
-    NodoLista* inicio;
+    NoLista* inicio;
 } ListaOrdenada;
 
 // Funções da lista ordenada
